@@ -23,7 +23,8 @@ namespace TestAssignmentSitek.FIAS_API
                         var response = await httpClient.SendAsync(request);
                         string line = await response.Content.ReadAsStringAsync();
                         FIAS_Model fIAS_Model = JsonConvert.DeserializeObject<FIAS_Model>(line);
-                        
+
+                        config.DateLastFile = fIAS_Model.Date;
                         return fIAS_Model.Kladr47ZUrl;
                     }
                 }
